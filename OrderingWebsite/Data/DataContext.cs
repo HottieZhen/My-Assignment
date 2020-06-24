@@ -6,11 +6,17 @@ namespace Data.Models
 {
     public class DataContext : DbContext
     {
+
         public DataContext(DbContextOptions<DataContext> options)
         : base(options)
         {
             
         }
+
+        public DbSet<User> Users { get; set; }
+        public DbSet<FoodMenu> FoodMenus { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Order_Food> Order_Foods { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -172,8 +178,6 @@ namespace Data.Models
                    CreateTime = DateTime.Now,
                    Status = "已完成"
                });
-            modelBuilder.Entity<User>().ToTable("Users");
-
         }
     }
 }

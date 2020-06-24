@@ -75,13 +75,13 @@ namespace OrderingWebsite.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("FoodMenu");
+                    b.ToTable("FoodMenus");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreateTime = new DateTime(2020, 6, 24, 23, 31, 54, 937, DateTimeKind.Local).AddTicks(6720),
+                            CreateTime = new DateTime(2020, 6, 25, 2, 9, 41, 940, DateTimeKind.Local).AddTicks(1730),
                             Description = "好吃的油焖大虾，2斤一份",
                             ImgUrl = "/upload/youmendaxie.jpg",
                             Name = "油焖大虾",
@@ -92,7 +92,7 @@ namespace OrderingWebsite.Web.Migrations
                         new
                         {
                             Id = 2,
-                            CreateTime = new DateTime(2020, 6, 24, 23, 31, 54, 937, DateTimeKind.Local).AddTicks(8030),
+                            CreateTime = new DateTime(2020, 6, 25, 2, 9, 41, 940, DateTimeKind.Local).AddTicks(2530),
                             Description = "手撕包菜",
                             ImgUrl = "/upload/1.jpg",
                             Name = "手撕包菜",
@@ -103,7 +103,7 @@ namespace OrderingWebsite.Web.Migrations
                         new
                         {
                             Id = 3,
-                            CreateTime = new DateTime(2020, 6, 24, 23, 31, 54, 937, DateTimeKind.Local).AddTicks(8070),
+                            CreateTime = new DateTime(2020, 6, 25, 2, 9, 41, 940, DateTimeKind.Local).AddTicks(2550),
                             Description = "水煮肉片一份",
                             ImgUrl = "/upload/shuizutoupian.jpg",
                             Name = "水煮肉片",
@@ -136,13 +136,13 @@ namespace OrderingWebsite.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Order");
+                    b.ToTable("Orders");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreateTime = new DateTime(2020, 6, 24, 23, 31, 54, 938, DateTimeKind.Local).AddTicks(1000),
+                            CreateTime = new DateTime(2020, 6, 25, 2, 9, 41, 940, DateTimeKind.Local).AddTicks(4790),
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 120m,
                             Status = "已付款",
@@ -151,7 +151,7 @@ namespace OrderingWebsite.Web.Migrations
                         new
                         {
                             Id = 2,
-                            CreateTime = new DateTime(2020, 6, 24, 23, 31, 54, 938, DateTimeKind.Local).AddTicks(2290),
+                            CreateTime = new DateTime(2020, 6, 25, 2, 9, 41, 940, DateTimeKind.Local).AddTicks(5870),
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 120m,
                             Status = "已送货",
@@ -160,7 +160,7 @@ namespace OrderingWebsite.Web.Migrations
                         new
                         {
                             Id = 3,
-                            CreateTime = new DateTime(2020, 6, 24, 23, 31, 54, 938, DateTimeKind.Local).AddTicks(2340),
+                            CreateTime = new DateTime(2020, 6, 25, 2, 9, 41, 940, DateTimeKind.Local).AddTicks(5900),
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 120m,
                             Status = "已完成",
@@ -185,7 +185,7 @@ namespace OrderingWebsite.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Order_Food");
+                    b.ToTable("Order_Foods");
 
                     b.HasData(
                         new
@@ -256,7 +256,7 @@ namespace OrderingWebsite.Web.Migrations
                         {
                             Id = 1,
                             Address = "慈溪市科院3#443",
-                            CreateTime = new DateTime(2020, 6, 24, 23, 31, 54, 910, DateTimeKind.Local).AddTicks(4550),
+                            CreateTime = new DateTime(2020, 6, 25, 2, 9, 41, 910, DateTimeKind.Local).AddTicks(3580),
                             Name = "吴皇震",
                             NickName = "HZW",
                             Password = "123",
@@ -267,7 +267,7 @@ namespace OrderingWebsite.Web.Migrations
                         {
                             Id = 2,
                             Address = "慈溪市科院3#443",
-                            CreateTime = new DateTime(2020, 6, 24, 23, 31, 54, 929, DateTimeKind.Local).AddTicks(5780),
+                            CreateTime = new DateTime(2020, 6, 25, 2, 9, 41, 934, DateTimeKind.Local).AddTicks(6510),
                             Name = "方浩亦",
                             NickName = "FHY",
                             Password = "123",
@@ -278,7 +278,7 @@ namespace OrderingWebsite.Web.Migrations
                         {
                             Id = 3,
                             Address = "慈溪市科院3#443",
-                            CreateTime = new DateTime(2020, 6, 24, 23, 31, 54, 929, DateTimeKind.Local).AddTicks(5820),
+                            CreateTime = new DateTime(2020, 6, 25, 2, 9, 41, 934, DateTimeKind.Local).AddTicks(6550),
                             Name = "张淼",
                             NickName = "SSSSSS",
                             Password = "13668955684",
@@ -289,7 +289,7 @@ namespace OrderingWebsite.Web.Migrations
                         {
                             Id = 4,
                             Address = "慈溪市科院3#443",
-                            CreateTime = new DateTime(2020, 6, 24, 23, 31, 54, 929, DateTimeKind.Local).AddTicks(5830),
+                            CreateTime = new DateTime(2020, 6, 25, 2, 9, 41, 934, DateTimeKind.Local).AddTicks(6560),
                             Name = "Admin",
                             NickName = "HZW",
                             Password = "123",

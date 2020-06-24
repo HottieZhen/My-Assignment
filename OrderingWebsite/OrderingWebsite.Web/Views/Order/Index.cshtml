@@ -1,0 +1,127 @@
+﻿<script type="text/template" id="orderList">
+    <div>
+        <div>
+            <el-button>默认按钮</el-button>
+            <el-button type="primary">主要按钮</el-button>
+            <el-button type="success">成功按钮</el-button>
+            <el-button type="info">信息按钮</el-button>
+            <el-button type="warning">警告按钮</el-button>
+            <el-button type="danger">危险按钮</el-button>
+        </div>
+        <el-table :data="tableData"
+                  style="width: 100%">
+            <el-table-column prop="id"
+                             label="订单号"
+                             width="80">
+            </el-table-column>
+            <el-table-column prop="userName"
+                             label="姓名"
+                             width="100">
+            </el-table-column>
+            <el-table-column prop="address"
+                             label="送货地址">
+            </el-table-column>
+            <el-table-column prop="createTime"
+                             label="订餐时间">
+            </el-table-column>
+            <el-table-column prop="price" width="100"
+                             label="价格">
+            </el-table-column>
+            <el-table-column prop="status" width="120"
+                             label="订单状态">
+            </el-table-column>
+        </el-table>
+    </div>
+</script>
+<script type="text/javascript">var order = {
+        template: "#orderList",
+        data() {
+            return {
+                tableData: [],
+                pagerOpt: {
+                    pageSize: 2,
+                    page: 1,
+                    total: 0,
+                },
+
+                backup: ""
+            }
+        },
+        mounted() {
+            this.getData();
+        },
+        methods: {
+            getData() {
+                var params = `pageNo=${this.pagerOpt.page}&pageSize=${this.pagerOpt.pageSize}`
+                _fetch("/Order/GetOrders?" + params, "GET").then(res => {
+                    if (res.status = true) {
+
+                        res.data.filter(x => {
+                            x.checked = false;
+                            x.isEdit = false;
+                        });
+                        this.tableData = res.data;
+                        this.pagerOpt.total = res.total;
+                    }
+                    else {
+                        alert("系统出错了！");
+                    }
+                });
+            },
+
+            editOrder() {
+                var ids = [];
+                this.tableData.filter(v => {
+                    if (v.checked) {
+                        ids.push(v.id);
+                    }
+                });
+
+                if (ids.length == 0 || ids.length > 1) {
+                    alert('请先选择一份订单');
+                    return;
+                }
+
+                var item = this.tableData.find(x => x.id == ids[0]);
+                item.isEdit = true;
+                this.backup = item.status;
+            },
+
+            cancelOrder(item) {
+                item.isEdit = false;
+                item.status = this.backup;
+            },
+
+            saveOrder(item) {
+                var parms = `id=${item.id}&status=${item.status}`
+                _fetch("/Order/Save?" + parms, "Post").then(res => {
+                    if (res.status = "Success") {
+                        this.getData();
+                    }
+                    else {
+                        alert("系统出错了！");
+                    }
+                });
+            },
+
+            deleteOrder() {
+                var ids = [];
+                this.tableData.forEach(function (v) {
+                    if (v.checked) {
+                        ids.push(v.id);
+                    }
+                });
+                if (ids.length == 0) {
+                    alert('请先选择一份订单');
+                    return;
+                }
+
+                alert("删除成功！");
+            },
+
+            pageChange() {
+                this.getData();
+            }
+        }
+    }</script>
+

@@ -1,15 +1,7 @@
 ﻿<Properties StartupConfiguration="{57E2C79D-8913-4218-B40F-1CAD92512B7D}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Data/DataContext.cs">
     <Files>
-      <File FileName="OrderingWebsite.Web/Startup.cs" Line="27" Column="93" />
-      <File FileName="OrderingWebsite.Web/Program.cs" Line="1" Column="1" />
-      <File FileName="OrderingWebsite.Web/appsettings.json" Line="11" Column="39" />
-      <File FileName="Data/Models/User.cs" Line="14" Column="49" />
-      <File FileName="Data/DataContext.cs" Line="175" Column="58" />
-      <File FileName="Data/Models/Category.cs" Line="7" Column="41" />
-      <File FileName="Data/Models/Order.cs" Line="11" Column="54" />
-      <File FileName="Data/Models/Oder_Food.cs" Line="4" Column="20" />
-      <File FileName="Data/Models/FoodMenu.cs" Line="13" Column="49" />
+      <File FileName="Data/DataContext.cs" Line="181" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -27,22 +19,27 @@
               <Node name="Dependencies" expanded="True">
                 <Node name="FrameworkReferences" expanded="True" />
               </Node>
-              <Node name="Migrations" expanded="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
+                <Node name="FoodMenu" expanded="True" />
                 <Node name="Home" expanded="True" />
+                <Node name="Order" expanded="True" />
               </Node>
-              <Node name="wwwroot" expanded="True" />
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+                <Node name="js" expanded="True" />
+                <Node name="lib" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.OrderingWebsite.Web FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.ItemProperties.OrderingWebsite.Web PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.OrderingWebsite.DAL FirstBuild="True" />
-  <MonoDevelop.Ide.ItemProperties.OrderingWebsite.BLL FirstBuild="True" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

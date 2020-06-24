@@ -18,8 +18,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.5" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Shared\" />
     <Folder Include="wwwroot\upload\" />
+    <Folder Include="Views\Order\" />
+    <Folder Include="Views\FoodMenu\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\OrderingWebsite.DAL.csproj">
@@ -28,5 +29,8 @@
     <ProjectReference Include="..\OrderingWebsite.BLL\OrderingWebsite.BLL.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="OrderingWebsite.db-shm" />
   </ItemGroup>
 </Project>
