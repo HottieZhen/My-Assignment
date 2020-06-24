@@ -1,0 +1,9 @@
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.BLL/bin/Debug/netcoreapp3.1/OrderingWebsite.BLL.deps.json
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.BLL/bin/Debug/netcoreapp3.1/OrderingWebsite.BLL.dll
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.BLL/bin/Debug/netcoreapp3.1/OrderingWebsite.BLL.pdb
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.BLL/obj/Debug/netcoreapp3.1/OrderingWebsite.BLL.csprojAssemblyReference.cache
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.BLL/obj/Debug/netcoreapp3.1/OrderingWebsite.BLL.AssemblyInfoInputs.cache
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.BLL/obj/Debug/netcoreapp3.1/OrderingWebsite.BLL.AssemblyInfo.cs
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.BLL/obj/Debug/netcoreapp3.1/OrderingWebsite.BLL.csproj.CoreCompileInputs.cache
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.BLL/obj/Debug/netcoreapp3.1/OrderingWebsite.BLL.dll
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.BLL/obj/Debug/netcoreapp3.1/OrderingWebsite.BLL.pdb

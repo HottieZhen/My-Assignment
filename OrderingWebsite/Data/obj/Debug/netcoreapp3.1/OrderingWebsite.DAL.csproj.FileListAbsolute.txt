@@ -1,0 +1,12 @@
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/Data/bin/Debug/netcoreapp3.1/OrderingWebsite.DAL.deps.json
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/Data/bin/Debug/netcoreapp3.1/OrderingWebsite.DAL.runtimeconfig.json
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/Data/bin/Debug/netcoreapp3.1/OrderingWebsite.DAL.runtimeconfig.dev.json
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/Data/bin/Debug/netcoreapp3.1/OrderingWebsite.DAL.dll
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/Data/bin/Debug/netcoreapp3.1/OrderingWebsite.DAL.pdb
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/Data/obj/Debug/netcoreapp3.1/OrderingWebsite.DAL.csprojAssemblyReference.cache
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/Data/obj/Debug/netcoreapp3.1/OrderingWebsite.DAL.AssemblyInfoInputs.cache
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/Data/obj/Debug/netcoreapp3.1/OrderingWebsite.DAL.AssemblyInfo.cs
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/Data/obj/Debug/netcoreapp3.1/OrderingWebsite.DAL.csproj.CoreCompileInputs.cache
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/Data/obj/Debug/netcoreapp3.1/OrderingWebsite.DAL.dll
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/Data/obj/Debug/netcoreapp3.1/OrderingWebsite.DAL.pdb
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/Data/obj/Debug/netcoreapp3.1/OrderingWebsite.DAL.genruntimeconfig.cache

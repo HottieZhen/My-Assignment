@@ -1,0 +1,29 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderingWebsite.Web", "OrderingWebsite.Web\OrderingWebsite.Web.csproj", "{57E2C79D-8913-4218-B40F-1CAD92512B7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderingWebsite.DAL", "Data\OrderingWebsite.DAL.csproj", "{CDC620F9-38AF-4429-8C27-93C506ADEB38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderingWebsite.BLL", "OrderingWebsite.BLL\OrderingWebsite.BLL.csproj", "{954B0377-8BF6-4239-B237-22261030D142}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57E2C79D-8913-4218-B40F-1CAD92512B7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57E2C79D-8913-4218-B40F-1CAD92512B7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57E2C79D-8913-4218-B40F-1CAD92512B7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57E2C79D-8913-4218-B40F-1CAD92512B7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDC620F9-38AF-4429-8C27-93C506ADEB38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDC620F9-38AF-4429-8C27-93C506ADEB38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDC620F9-38AF-4429-8C27-93C506ADEB38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDC620F9-38AF-4429-8C27-93C506ADEB38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{954B0377-8BF6-4239-B237-22261030D142}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{954B0377-8BF6-4239-B237-22261030D142}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{954B0377-8BF6-4239-B237-22261030D142}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{954B0377-8BF6-4239-B237-22261030D142}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
