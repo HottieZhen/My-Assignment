@@ -26,10 +26,23 @@ namespace TakeOut.Web.Controllers
         }
 
         [Authorize(Roles = "1")]
+        public IActionResult Statistics()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "1")]
         public IActionResult GetFoodMenus(QueryDto filter)
         {
             var foods = _foodService.GetFoodMenus(filter, out int total);
             return Json(new ResponseModel(true, foods, total));
+        }
+
+        [Authorize(Roles = "1")]
+        public IActionResult GetStatistics(QueryDto filter)
+        {
+            var foods = _foodService.GetStatistics(filter);
+            return Json(new ResponseModel(true, foods, 0));
         }
 
         [Authorize(Roles = "1")]

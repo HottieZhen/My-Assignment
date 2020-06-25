@@ -1,0 +1,68 @@
+﻿<script type="text/template" id="statisticList">
+    <div>
+        <div style="text-align: right">
+            <el-date-picker v-model="start"
+                            type="date"
+                            placeholder="选择日期">
+            </el-date-picker>
+            <el-date-picker v-model="end"
+                            type="date"
+                            placeholder="选择日期">
+            </el-date-picker>
+
+            <el-button type="primary" @@click="getData()">查询</el-button>
+        </div>
+
+        <el-table :data="tableData" v-loading="loading"
+                  style="width: 100%">
+            <el-table-column prop="foodName"
+                             label="菜名">
+            </el-table-column>
+            <el-table-column prop="count"
+                             label="销量">
+            </el-table-column>
+            <el-table-column prop="price" width="100" :formatter="format"
+                             label="金额">
+            </el-table-column>
+        </el-table>
+    </div>
+</script>
+
+<script type="text/javascript">var statistics = {
+        template: '#statisticList',
+        data() {
+            return {
+                tableData: [],
+                start: null,
+                end: null,
+                loading: true
+            }
+        },
+        mounted() {
+            this.getData();
+        },
+        methods: {
+            getData() {
+                var startDate = moment(this.start).format("YYYY-MM-DD");
+                var startEnd = moment(this.end).format("YYYY-MM-DD");
+                var params = `start=${startDate}&end=${startEnd}`;
+                this.loading = true;
+                _fetch("/FoodMenu/GetStatistics?" + params, "GET").then(res => {
+                    if (res.status = "Success") {
+                        this.tableData = res.data;
+                    }
+                    else {
+                        alert("系统出错了！");
+                    }
+
+                    this.loading = false;
+                });
+            },
+
+            format(row, column) {
+                var val = row.price.toFixed(2);
+
+                return `￥${val}元`;
+            }
+        }
+    };</script>
