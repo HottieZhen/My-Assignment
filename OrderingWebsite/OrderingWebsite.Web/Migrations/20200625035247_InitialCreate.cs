@@ -8,7 +8,7 @@ namespace OrderingWebsite.Web.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Category",
+                name: "Categorys",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -17,7 +17,7 @@ namespace OrderingWebsite.Web.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Category", x => x.Id);
+                    table.PrimaryKey("PK_Categorys", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -92,29 +92,29 @@ namespace OrderingWebsite.Web.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Category",
+                table: "Categorys",
                 columns: new[] { "Id", "Name" },
                 values: new object[] { 1, "荤菜" });
 
             migrationBuilder.InsertData(
-                table: "Category",
+                table: "Categorys",
                 columns: new[] { "Id", "Name" },
                 values: new object[] { 2, "素菜" });
 
             migrationBuilder.InsertData(
                 table: "FoodMenus",
                 columns: new[] { "Id", "CreateTime", "Description", "ImgUrl", "Name", "Price", "StockCount", "Type" },
-                values: new object[] { 1, new DateTime(2020, 6, 25, 2, 9, 41, 940, DateTimeKind.Local).AddTicks(1730), "好吃的油焖大虾，2斤一份", "/upload/youmendaxie.jpg", "油焖大虾", 128m, 100, "荤菜" });
+                values: new object[] { 1, new DateTime(2020, 6, 25, 11, 52, 46, 985, DateTimeKind.Local).AddTicks(8480), "好吃的油焖大虾，2斤一份", "/upload/youmendaxie.jpg", "油焖大虾", 128m, 100, "荤菜" });
 
             migrationBuilder.InsertData(
                 table: "FoodMenus",
                 columns: new[] { "Id", "CreateTime", "Description", "ImgUrl", "Name", "Price", "StockCount", "Type" },
-                values: new object[] { 2, new DateTime(2020, 6, 25, 2, 9, 41, 940, DateTimeKind.Local).AddTicks(2530), "手撕包菜", "/upload/1.jpg", "手撕包菜", 12m, 100, "荤菜" });
+                values: new object[] { 2, new DateTime(2020, 6, 25, 11, 52, 46, 985, DateTimeKind.Local).AddTicks(9610), "手撕包菜", "/upload/1.jpg", "手撕包菜", 12m, 100, "荤菜" });
 
             migrationBuilder.InsertData(
                 table: "FoodMenus",
                 columns: new[] { "Id", "CreateTime", "Description", "ImgUrl", "Name", "Price", "StockCount", "Type" },
-                values: new object[] { 3, new DateTime(2020, 6, 25, 2, 9, 41, 940, DateTimeKind.Local).AddTicks(2550), "水煮肉片一份", "/upload/shuizutoupian.jpg", "水煮肉片", 38m, 100, "荤菜" });
+                values: new object[] { 3, new DateTime(2020, 6, 25, 11, 52, 46, 985, DateTimeKind.Local).AddTicks(9650), "水煮肉片一份", "/upload/shuizutoupian.jpg", "水煮肉片", 38m, 100, "荤菜" });
 
             migrationBuilder.InsertData(
                 table: "Order_Foods",
@@ -134,43 +134,43 @@ namespace OrderingWebsite.Web.Migrations
             migrationBuilder.InsertData(
                 table: "Orders",
                 columns: new[] { "Id", "CreateTime", "LastUpdatedTime", "Price", "Status", "UserId" },
-                values: new object[] { 1, new DateTime(2020, 6, 25, 2, 9, 41, 940, DateTimeKind.Local).AddTicks(4790), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 120m, "已付款", 1 });
+                values: new object[] { 1, new DateTime(2020, 6, 25, 11, 52, 46, 986, DateTimeKind.Local).AddTicks(1630), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 120m, "已付款", 1 });
 
             migrationBuilder.InsertData(
                 table: "Orders",
                 columns: new[] { "Id", "CreateTime", "LastUpdatedTime", "Price", "Status", "UserId" },
-                values: new object[] { 2, new DateTime(2020, 6, 25, 2, 9, 41, 940, DateTimeKind.Local).AddTicks(5870), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 120m, "已送货", 3 });
+                values: new object[] { 2, new DateTime(2020, 6, 25, 11, 52, 46, 986, DateTimeKind.Local).AddTicks(2550), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 120m, "已送货", 3 });
 
             migrationBuilder.InsertData(
                 table: "Orders",
                 columns: new[] { "Id", "CreateTime", "LastUpdatedTime", "Price", "Status", "UserId" },
-                values: new object[] { 3, new DateTime(2020, 6, 25, 2, 9, 41, 940, DateTimeKind.Local).AddTicks(5900), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 120m, "已完成", 3 });
+                values: new object[] { 3, new DateTime(2020, 6, 25, 11, 52, 46, 986, DateTimeKind.Local).AddTicks(2580), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 120m, "已完成", 3 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Address", "Avatar", "CreateTime", "Name", "NickName", "Password", "Phone", "RoleId" },
-                values: new object[] { 1, "慈溪市科院3#443", null, new DateTime(2020, 6, 25, 2, 9, 41, 910, DateTimeKind.Local).AddTicks(3580), "吴皇震", "HZW", "123", "13568955684", 2 });
+                values: new object[] { 1, "慈溪市科院3#443", null, new DateTime(2020, 6, 25, 11, 52, 46, 976, DateTimeKind.Local).AddTicks(3430), "吴皇震", "HZW", "202cb962ac59075b964b07152d234b70", "13568955684", 2 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Address", "Avatar", "CreateTime", "Name", "NickName", "Password", "Phone", "RoleId" },
-                values: new object[] { 2, "慈溪市科院3#443", null, new DateTime(2020, 6, 25, 2, 9, 41, 934, DateTimeKind.Local).AddTicks(6510), "方浩亦", "FHY", "123", "13668955684", 2 });
+                values: new object[] { 2, "慈溪市科院3#443", null, new DateTime(2020, 6, 25, 11, 52, 46, 981, DateTimeKind.Local).AddTicks(1310), "方浩亦", "FHY", "202cb962ac59075b964b07152d234b70", "13668955684", 2 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Address", "Avatar", "CreateTime", "Name", "NickName", "Password", "Phone", "RoleId" },
-                values: new object[] { 3, "慈溪市科院3#443", null, new DateTime(2020, 6, 25, 2, 9, 41, 934, DateTimeKind.Local).AddTicks(6550), "张淼", "SSSSSS", "13668955684", "13668234244", 2 });
+                values: new object[] { 3, "慈溪市科院3#443", null, new DateTime(2020, 6, 25, 11, 52, 46, 981, DateTimeKind.Local).AddTicks(1390), "张淼", "SSSSSS", "202cb962ac59075b964b07152d234b70", "13668234244", 2 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Address", "Avatar", "CreateTime", "Name", "NickName", "Password", "Phone", "RoleId" },
-                values: new object[] { 4, "慈溪市科院3#443", null, new DateTime(2020, 6, 25, 2, 9, 41, 934, DateTimeKind.Local).AddTicks(6560), "Admin", "HZW", "123", "13568955684", 1 });
+                values: new object[] { 4, "慈溪市科院3#443", null, new DateTime(2020, 6, 25, 11, 52, 46, 981, DateTimeKind.Local).AddTicks(1510), "Admin", "HZW", "202cb962ac59075b964b07152d234b70", "13568955684", 1 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Category");
+                name: "Categorys");
 
             migrationBuilder.DropTable(
                 name: "FoodMenus");

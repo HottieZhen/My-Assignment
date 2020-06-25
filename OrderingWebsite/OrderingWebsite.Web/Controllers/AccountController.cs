@@ -26,7 +26,7 @@ namespace OrderingWebsite.Web.Controllers
         [HttpPost]
         public IActionResult DoLogin(string account, string password, int type)
         {
-            var user = _Service.GetUser(account, password);
+            var user = _Service.GetUser(account, Encryp.MD5Encrypt(password));
             if (user == null || user.RoleId != type)
             {
                 return Json(new ResponseModel(false, 0, 0));

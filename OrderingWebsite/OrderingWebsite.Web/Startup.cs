@@ -51,6 +51,7 @@ namespace OrderingWebsite.Web
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

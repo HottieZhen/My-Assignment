@@ -28,7 +28,7 @@ namespace OrderingWebsite.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categorys");
 
                     b.HasData(
                         new
@@ -81,7 +81,7 @@ namespace OrderingWebsite.Web.Migrations
                         new
                         {
                             Id = 1,
-                            CreateTime = new DateTime(2020, 6, 25, 10, 36, 7, 248, DateTimeKind.Local).AddTicks(7650),
+                            CreateTime = new DateTime(2020, 6, 25, 11, 52, 46, 985, DateTimeKind.Local).AddTicks(8480),
                             Description = "好吃的油焖大虾，2斤一份",
                             ImgUrl = "/upload/youmendaxie.jpg",
                             Name = "油焖大虾",
@@ -92,7 +92,7 @@ namespace OrderingWebsite.Web.Migrations
                         new
                         {
                             Id = 2,
-                            CreateTime = new DateTime(2020, 6, 25, 10, 36, 7, 248, DateTimeKind.Local).AddTicks(8450),
+                            CreateTime = new DateTime(2020, 6, 25, 11, 52, 46, 985, DateTimeKind.Local).AddTicks(9610),
                             Description = "手撕包菜",
                             ImgUrl = "/upload/1.jpg",
                             Name = "手撕包菜",
@@ -103,7 +103,7 @@ namespace OrderingWebsite.Web.Migrations
                         new
                         {
                             Id = 3,
-                            CreateTime = new DateTime(2020, 6, 25, 10, 36, 7, 248, DateTimeKind.Local).AddTicks(8480),
+                            CreateTime = new DateTime(2020, 6, 25, 11, 52, 46, 985, DateTimeKind.Local).AddTicks(9650),
                             Description = "水煮肉片一份",
                             ImgUrl = "/upload/shuizutoupian.jpg",
                             Name = "水煮肉片",
@@ -142,7 +142,7 @@ namespace OrderingWebsite.Web.Migrations
                         new
                         {
                             Id = 1,
-                            CreateTime = new DateTime(2020, 6, 25, 10, 36, 7, 248, DateTimeKind.Local).AddTicks(9990),
+                            CreateTime = new DateTime(2020, 6, 25, 11, 52, 46, 986, DateTimeKind.Local).AddTicks(1630),
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 120m,
                             Status = "已付款",
@@ -151,7 +151,7 @@ namespace OrderingWebsite.Web.Migrations
                         new
                         {
                             Id = 2,
-                            CreateTime = new DateTime(2020, 6, 25, 10, 36, 7, 249, DateTimeKind.Local).AddTicks(720),
+                            CreateTime = new DateTime(2020, 6, 25, 11, 52, 46, 986, DateTimeKind.Local).AddTicks(2550),
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 120m,
                             Status = "已送货",
@@ -160,7 +160,7 @@ namespace OrderingWebsite.Web.Migrations
                         new
                         {
                             Id = 3,
-                            CreateTime = new DateTime(2020, 6, 25, 10, 36, 7, 249, DateTimeKind.Local).AddTicks(740),
+                            CreateTime = new DateTime(2020, 6, 25, 11, 52, 46, 986, DateTimeKind.Local).AddTicks(2580),
                             LastUpdatedTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 120m,
                             Status = "已完成",
@@ -256,10 +256,10 @@ namespace OrderingWebsite.Web.Migrations
                         {
                             Id = 1,
                             Address = "慈溪市科院3#443",
-                            CreateTime = new DateTime(2020, 6, 25, 10, 36, 7, 241, DateTimeKind.Local).AddTicks(4020),
+                            CreateTime = new DateTime(2020, 6, 25, 11, 52, 46, 976, DateTimeKind.Local).AddTicks(3430),
                             Name = "吴皇震",
                             NickName = "HZW",
-                            Password = "123",
+                            Password = "202cb962ac59075b964b07152d234b70",
                             Phone = "13568955684",
                             RoleId = 2
                         },
@@ -267,10 +267,10 @@ namespace OrderingWebsite.Web.Migrations
                         {
                             Id = 2,
                             Address = "慈溪市科院3#443",
-                            CreateTime = new DateTime(2020, 6, 25, 10, 36, 7, 244, DateTimeKind.Local).AddTicks(9050),
+                            CreateTime = new DateTime(2020, 6, 25, 11, 52, 46, 981, DateTimeKind.Local).AddTicks(1310),
                             Name = "方浩亦",
                             NickName = "FHY",
-                            Password = "123",
+                            Password = "202cb962ac59075b964b07152d234b70",
                             Phone = "13668955684",
                             RoleId = 2
                         },
@@ -278,10 +278,10 @@ namespace OrderingWebsite.Web.Migrations
                         {
                             Id = 3,
                             Address = "慈溪市科院3#443",
-                            CreateTime = new DateTime(2020, 6, 25, 10, 36, 7, 244, DateTimeKind.Local).AddTicks(9080),
+                            CreateTime = new DateTime(2020, 6, 25, 11, 52, 46, 981, DateTimeKind.Local).AddTicks(1390),
                             Name = "张淼",
                             NickName = "SSSSSS",
-                            Password = "13668955684",
+                            Password = "202cb962ac59075b964b07152d234b70",
                             Phone = "13668234244",
                             RoleId = 2
                         },
@@ -289,10 +289,10 @@ namespace OrderingWebsite.Web.Migrations
                         {
                             Id = 4,
                             Address = "慈溪市科院3#443",
-                            CreateTime = new DateTime(2020, 6, 25, 10, 36, 7, 244, DateTimeKind.Local).AddTicks(9090),
+                            CreateTime = new DateTime(2020, 6, 25, 11, 52, 46, 981, DateTimeKind.Local).AddTicks(1510),
                             Name = "Admin",
                             NickName = "HZW",
-                            Password = "123",
+                            Password = "202cb962ac59075b964b07152d234b70",
                             Phone = "13568955684",
                             RoleId = 1
                         });

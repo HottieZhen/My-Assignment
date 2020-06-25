@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using OrderingWebsite.DAL.Models;
+using OrderingWebsite.DAL.Tools;
 
 namespace Data.Models
 {
@@ -36,7 +37,7 @@ namespace Data.Models
                     RoleId = 2,
                     Name = "吴皇震",
                     NickName = "HZW",
-                    Password = "123",
+                    Password = Encryp.MD5Encrypt("123"),
                     Phone = "13568955684",
                     Address = "慈溪市科院3#443",
                     CreateTime = DateTime.Now
@@ -46,7 +47,7 @@ namespace Data.Models
                     Id = 2,
                     RoleId = 2,
                     Name = "方浩亦",
-                    Password = "123",
+                    Password = Encryp.MD5Encrypt("123"),
                     NickName = "FHY",
                     Phone = "13668955684",
                     Address = "慈溪市科院3#443",
@@ -58,7 +59,7 @@ namespace Data.Models
                     RoleId = 2,
                     Name = "张淼",
                     NickName = "SSSSSS",
-                    Password = "13668955684",
+                    Password = Encryp.MD5Encrypt("123"),
                     Phone = "13668234244",
                     Address = "慈溪市科院3#443",
                     CreateTime = DateTime.Now
@@ -69,7 +70,7 @@ namespace Data.Models
                     RoleId = 1,
                     Name = "Admin",
                     NickName = "HZW",
-                    Password = "123",
+                    Password = Encryp.MD5Encrypt("123"),
                     Phone = "13568955684",
                     Address = "慈溪市科院3#443",
                     CreateTime = DateTime.Now
