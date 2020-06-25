@@ -13,6 +13,7 @@ namespace Data.Models
             
         }
 
+        public DbSet<Category> Categorys { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<FoodMenu> FoodMenus { get; set; }
         public DbSet<Order> Orders { get; set; }

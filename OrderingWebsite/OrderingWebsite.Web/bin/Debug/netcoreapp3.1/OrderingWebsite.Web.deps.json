@@ -819,6 +819,9 @@
         }
       },
       "OrderingWebsite.BLL/1.0.0": {
+        "dependencies": {
+          "OrderingWebsite.DAL": "1.0.0"
+        },
         "runtime": {
           "OrderingWebsite.BLL.dll": {}
         },

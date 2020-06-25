@@ -17,7 +17,7 @@
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/k/.config/NuGet/NuGet.Config"
+          "/Users/k/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -100,7 +100,7 @@
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/k/.config/NuGet/NuGet.Config"
+          "/Users/k/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -110,7 +110,11 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/Data/OrderingWebsite.DAL.csproj": {
+                "projectPath": "/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/Data/OrderingWebsite.DAL.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -153,7 +157,7 @@
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/k/.config/NuGet/NuGet.Config"
+          "/Users/k/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"

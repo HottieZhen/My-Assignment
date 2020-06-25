@@ -21,6 +21,7 @@
     <Folder Include="wwwroot\upload\" />
     <Folder Include="Views\Order\" />
     <Folder Include="Views\FoodMenu\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\OrderingWebsite.DAL.csproj">
