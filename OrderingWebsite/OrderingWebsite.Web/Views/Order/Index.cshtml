@@ -16,18 +16,30 @@
             </el-table-column>
             <el-table-column prop="userName"
                              label="姓名"
+                             width="80">
+            </el-table-column>
+            <el-table-column prop="phone"
+                             label="电话"
+                             width="120">
+            </el-table-column>
+            <el-table-column label="菜品"
                              width="100">
+                <template slot-scope="scope">
+                    <span v-for="item in scope.row.foodDic">
+                        {{item.item1}} x{{item.item2}}
+                    </span>
+                </template>
             </el-table-column>
             <el-table-column prop="address"
                              label="送货地址">
             </el-table-column>
-            <el-table-column prop="createTime" :formatter="dateFormatter"
+            <el-table-column prop="createTime" :formatter="dateFormatter" width="100"
                              label="订餐时间">
             </el-table-column>
             <el-table-column prop="price" width="100" :formatter="format"
                              label="价格">
             </el-table-column>
-            <el-table-column width="180"
+            <el-table-column width="100"
                              label="订单状态">
                 <template slot-scope="scope">
                     <span v-if="!scope.row.isEdit">{{scope.row.status}}</span>
@@ -72,15 +84,14 @@
         </el-pagination>
     </div>
 </script>
-<script type="text/javascript">
-    var order = {
+<script type="text/javascript">var order = {
         template: "#orderList",
         data() {
             return {
                 tableData: [],
 
                 pagerOpt: {
-                    pageSize: 2,
+                    pageSize: 20,
                     page: 1,
                     total: 0,
                 },
@@ -96,6 +107,10 @@
                 var params = `pageNo=${this.pagerOpt.page}&pageSize=${this.pagerOpt.pageSize}`
                 _fetch("/Order/GetOrders?" + params, "GET").then(res => {
                     if (res.status = true) {
+                        res.data.filter(x => {
+                            x.isEdit = false;
+                        });
+
                         this.tableData = res.data;
                         this.pagerOpt.total = res.total;
                     }

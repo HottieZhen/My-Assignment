@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using TakeOut.BLL;
 using OrderingWebsite.BLL;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace OrderingWebsite.Web
 {
@@ -22,6 +23,13 @@ namespace OrderingWebsite.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options =>
+            {
+                options.LoginPath = "/Account/AELogin";
+                options.AccessDeniedPath = "/Account/Denied";
+            });
+
             services.AddControllersWithViews();
             services.AddDbContext<DataContext>(
                 options => options.UseSqlite(

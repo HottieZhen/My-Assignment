@@ -1,5 +1,5 @@
 ﻿@using System.Linq
-@using OrderingWebsite.Web.Models
+@using OrderingWebsite.Web.Models;
 @model List<Menu>
 
 <!DOCTYPE html>
@@ -8,12 +8,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Index</title>
+
     <link rel="stylesheet" href="~/css/main.css" />
     <link rel="stylesheet" href="~/lib/element-ui/theme-chalk/index.css" />
     <script type="text/javascript" src="~/lib/vue/vue.js"></script>
     <script type="text/javascript" src="~/lib/element-ui/index.js"></script>
     <script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="~/js/site.js"></script>
+    <script type="text/javascript" src="~/js/moment.js"></script>
 </head>
 <body>
     <div id="app">
@@ -29,8 +31,9 @@
                             <i class="el-icon-menu"></i>
                         </span>
                     </div>
-                    <div style="margin-top: -24px;  margin-left: 330px; text-align:right;">
+                    <div style="margin-top: -24px;  margin-left: 330px; text-align:right;color: #fff;">
                         当前用户：{{username}}
+                        <a href="/Account/AELogout" style="margin-left:25px; color: #fff;">退出</a>
                     </div>
                 </el-header>
                 <el-container>
@@ -100,7 +103,7 @@
                     <el-main v-bind:class="{main_toggle:isCollapse}">
                         <el-tabs v-model="tabsIndex" type="border-card" closable
                                  @@tab-remove="removeTab"
-                                 style="height:100%;min-width:900px;">
+                                 style="min-width:900px;">
                             <el-tab-pane v-for="(item, index) in tabsData"
                                          :key="item.name"
                                          :label="item.title"
@@ -122,28 +125,33 @@
 <script>
 
     var table_s = {
-        template: '<el-table border v-bind:data="tableData" style="width: 100%"  ><el-table-column prop="date" label="日期"  width="180">'
-            + ' </el-table-column> <el-table-column prop="name" label="姓名" width="180"></el-table-column><el-table-column prop="address" label="地址">'
-            + '</el-table-column></el-table >',
+
+        template: '<div><div style="font-size: 14px"><b>@User.Identity.Name</b>, 欢迎光临吃了么外卖后台管理系统。<br> <br>销售业绩图<br></div><el-table border v-bind:data="tableData" style="width: 100%"  ><el-table-column prop="date" label="日期"  width="180">'
+            + ' </el-table-column> <el-table-column prop="name" label="订单数" width="180"></el-table-column><el-table-column prop="address" label="订单总金额"></el-table-column><el-table-column prop="rate" label="好评率" width="180">'
+            + '</el-table-column></el-table ></div>',
         data() {
             return {
                 tableData: [
                     {
-                        date: '2020-06-25',
-                        name: '王小虎',
-                        address: '上海市普陀区金沙江路 1518 弄',
+                        date: '2020-05-02',
+                        name: '100',
+                        address: '￥1500.12元',
+                        rate: '100%'
                     }, {
-                        date: '2020-06-25',
-                        name: '王小虎',
-                        address: '上海市普陀区金沙江路 1518 弄'
+                        date: '2020-05-04',
+                        name: '200',
+                        address: '￥1500.12元',
+                        rate: '100%'
                     }, {
-                        date: '2020-06-25',
-                        name: '王小虎',
-                        address: '上海市普陀区金沙江路 1518 弄',
+                        date: '2020-05-01',
+                        name: '300',
+                        address: '￥1700.11元',
+                        rate: '100%'
                     }, {
-                        date: '2020-06-25',
-                        name: '王小虎',
-                        address: '上海市普陀区金沙江路 1518 弄'
+                        date: '2020-06-03',
+                        name: '400',
+                        address: '￥2500.12元',
+                        rate: '100%'
                     }
                 ]
             }
@@ -153,7 +161,7 @@
         el: "#app",
         data: {
             isCollapse:false,
-            username: '@Html.Raw(ViewData["username"])',
+            username: '@User.Identity.Name',
             tabsData: [{
                 name: '1',
                 title: '首页',
