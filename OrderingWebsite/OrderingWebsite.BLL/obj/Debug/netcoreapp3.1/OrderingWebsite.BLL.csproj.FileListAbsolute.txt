@@ -7,3 +7,6 @@
 /Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.BLL/obj/Debug/netcoreapp3.1/OrderingWebsite.BLL.csproj.CoreCompileInputs.cache
 /Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.BLL/obj/Debug/netcoreapp3.1/OrderingWebsite.BLL.dll
 /Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.BLL/obj/Debug/netcoreapp3.1/OrderingWebsite.BLL.pdb
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.BLL/bin/Debug/netcoreapp3.1/OrderingWebsite.DAL.dll
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.BLL/bin/Debug/netcoreapp3.1/OrderingWebsite.DAL.pdb
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.BLL/obj/Debug/netcoreapp3.1/OrderingWebsite.BLL.csproj.CopyComplete

@@ -1,13 +1,11 @@
 ﻿<script type="text/template" id="foodMenuList">
     <div>
-        <div>
-            <el-button type="primary">添加菜品</el-button>
-            <el-button type="success">编辑菜品</el-button>
-            <el-button type="danger">删除菜品</el-button>
+        <div style="text-align: right">
+            <el-button type="primary" @@click="addFoodMenu()">添加菜品</el-button>
         </div>
         <el-table :data="tableData"
                   style="width: 100%">
-            <el-table-column prop="imgUrl" width="120"
+            <el-table-column prop="imgUrl" width="150"
                              label="图样">
                 <template slot-scope="scope">
                     <img :src="scope.row.imgUrl" min-width="100" height="100" />
@@ -28,7 +26,64 @@
             <el-table-column prop="price" width="100" :formatter="format"
                              label="价格">
             </el-table-column>
+
+            <el-table-column fixed="right"
+                             label="操作"
+                             width="180">
+                <template slot-scope="scope">
+                    <el-button @@click="editFoodMenu(scope.row)" type="primary" size="small">
+                        编辑
+                    </el-button>
+                    <el-button @@click="deleteFoodMenu(scope.row)" type="danger" size="small">
+                        删除
+                    </el-button>
+                </template>
+            </el-table-column>
         </el-table>
+
+        <el-pagination background
+                       @@size-change="pageSizeChange"
+                       @@current-change="pageCurrentChange"
+                       :page-size="pagerOpt.pageSize"
+                       :current-page="pagerOpt.page"
+                       :total="pagerOpt.total"
+                       :page-sizes="[2, 10, 20, 50, 100]"
+                       layout="total, sizes, prev, pager, next, jumper">
+        </el-pagination>
+
+        <el-dialog :title="editType" :visible.sync="addFoodVisible">
+            <el-form :model="form">
+                <el-form-item label="菜名" :label-width="formLabelWidth">
+                    <el-input v-model="form.Name" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="表述" :label-width="formLabelWidth">
+                    <el-input v-model="form.Description" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="价格" :label-width="formLabelWidth">
+                    <el-input v-model="form.Price" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="库存" :label-width="formLabelWidth">
+                    <el-input v-model="form.StockCount" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="分类" :label-width="formLabelWidth">
+                    <el-input v-model="form.Type" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="图样" :label-width="formLabelWidth">
+                    <el-upload class="avatar-uploader"
+                               action="/FoodMenu/UploadImg"
+                               :show-file-list="false"
+                               :on-success="handleAvatarSuccess"
+                               :before-upload="beforeAvatarUpload">
+                        <img v-if="form.ImgUrl" :src="form.ImgUrl" class="avatar" width="120" height="120">
+                        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                    </el-upload>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @@click="closeDialog()">取 消</el-button>
+                <el-button type="primary" @@click="submitFoodMenu()">确 定</el-button>
+            </div>
+        </el-dialog>
     </div>
 </script>
 
@@ -37,15 +92,16 @@
         data() {
             return {
                 saveUrl: "/Food/UploadImg",
-                    tableData: [],
+                tableData: [],
 
-                    pagerOpt: {
-                    pageSize: 2,
+                pagerOpt: {
+                    pageSize: 20,
                     page: 1,
                     total: 0,
                 },
 
-                model: {
+                form: {
+                    Id: 0,
                     Name: "",
                     Description: "",
                     Price: 0,
@@ -55,7 +111,9 @@
                 },
 
                 editType: "添加",
-                    backup: ""
+                backup: {},
+                addFoodVisible: false,
+                formLabelWidth: '80px'
             }
         },
         mounted() {
@@ -80,9 +138,26 @@
                 });
             },
 
-            addFood() {
-                this.editType = "添加";
-                this.$refs.addWin.show();
+            addFoodMenu() {
+                this.editType = "添加菜品";
+                this.addFoodVisible = true;
+            },
+
+            deleteFoodMenu(row) {
+                this.backup = $.extend(true, {}, row);
+            },
+
+            editFoodMenu(row) {
+                this.form = {
+                    Id: row.id,
+                    Name: row.name,
+                    Description: row.description,
+                    Price: row.price,
+                    StockCount: row.stockCount,
+                    Type: row.type,
+                    ImgUrl: row.imgUrl,
+                };
+                this.addFoodVisible = true;
             },
 
             format(row, column) {
@@ -91,20 +166,20 @@
                 return `￥${val}元`;
             },
 
-            dateFormatter (row, column) {
+            dateFormatter(row, column) {
                 let datetime = row.time;
-                if(datetime){
+                if (datetime) {
                     datetime = new Date(datetime);
                     let y = datetime.getFullYear() + '-';
-                    let mon = datetime.getMonth()+1 + '-';
+                    let mon = datetime.getMonth() + 1 + '-';
                     let d = datetime.getDate();
                     return y + mon + d;
                 }
                 return ''
             },
 
-            closeWin() {
-                this.model = {
+            closeDialog() {
+                this.form = {
                     Name: "",
                     Description: "",
                     Price: "",
@@ -113,18 +188,19 @@
                     ImgUrl: ""
                 };
 
-                this.$refs.addWin.close();
+                this.addFoodVisible = false;
             },
 
-            submitFood() {
-                if (!this.model.Name || !this.model.Description || !this.model.Price
-                    || !this.model.StockCount || !this.model.Type || !this.model.ImgUrl) {
-                    alert("请完成下面所有信息！")
-                    return;
-                }
+            submitFoodMenu() {
+                //if (!this.form.Name || !this.form.Description || !this.form.Price
+                //    || !this.form.StockCount || !this.form.Type || !this.form.ImgUrl) {
+                //    alert("请完成下面所有信息！")
+                //    return;
+                //}
 
-                var model = $.extend(true, {}, this.model);
+                var model = $.extend(true, {}, this.form);
                 var data = {
+                    Id: model.Id,
                     Name: model.Name,
                     Description: model.Description,
                     ImgUrl: model.ImgUrl,
@@ -133,10 +209,11 @@
                     StockCount: parseFloat(model.StockCount),
                 }
 
-                _fetch("/Food/AddFood", "POST", data).then(res => {
-                    if (res.status = "Success") {
-                        alert("添加成功！");
+                _fetch("/FoodMenu/AddFoodMenu", "POST", data).then(res => {
+                    if (res.status == true) {
+                        alert("操作成功！");
                         this.getData();
+                        this.addFoodVisible = false;
                     }
                     else {
                         alert("系统出错了！");
@@ -203,8 +280,32 @@
                 alert("删除成功！");
             },
 
-            pageChange() {
+            pageSizeChange(val) {
+                this.pagerOpt.pageSize = val;
                 this.getData();
+            },
+
+            pageCurrentChange(val) {
+                this.pagerOpt.page = val;
+                this.getData();
+            },
+
+            handleAvatarSuccess(res, file) {
+                this.form.ImgUrl = URL.createObjectURL(file.raw);
+            },
+
+            beforeAvatarUpload(file) {
+                const isJPG = file.type === 'image/jpeg';
+                const isLt2M = file.size / 1024 / 1024 < 2;
+
+                if (!isJPG) {
+                    alert('上传图片只能是 JPG 格式!');
+                    return;
+                }
+                if (!isLt2M) {
+                    alert('上传图片大小不能超过 2MB!');
+                    return;
+                }
             }
         }
     };</script>

@@ -1,12 +1,12 @@
 ﻿<script type="text/template" id="orderList">
     <div>
         <div>
-            <el-button>默认按钮</el-button>
-            <el-button type="primary">主要按钮</el-button>
-            <el-button type="success">成功按钮</el-button>
-            <el-button type="info">信息按钮</el-button>
-            <el-button type="warning">警告按钮</el-button>
-            <el-button type="danger">危险按钮</el-button>
+            @*<el-button>默认按钮</el-button>
+                <el-button type="primary">主要按钮</el-button>
+                <el-button type="success">成功按钮</el-button>
+                <el-button type="info">信息按钮</el-button>
+                <el-button type="warning">警告按钮</el-button>
+                <el-button type="danger">危险按钮</el-button>*@
         </div>
         <el-table :data="tableData"
                   style="width: 100%">
@@ -21,23 +21,64 @@
             <el-table-column prop="address"
                              label="送货地址">
             </el-table-column>
-            <el-table-column prop="createTime"
+            <el-table-column prop="createTime" :formatter="dateFormatter"
                              label="订餐时间">
             </el-table-column>
-            <el-table-column prop="price" width="100"
+            <el-table-column prop="price" width="100" :formatter="format"
                              label="价格">
             </el-table-column>
-            <el-table-column prop="status" width="120"
+            <el-table-column width="180"
                              label="订单状态">
+                <template slot-scope="scope">
+                    <span v-if="!scope.row.isEdit">{{scope.row.status}}</span>
+                    <select v-else class="el-input__inner" v-model="scope.row.status">
+                        <option>已付款</option>
+                        <option>备餐中</option>
+                        <option>已发货</option>
+                        <option>已收货</option>
+                        <option>已完成</option>
+                        <option>已评价</option>
+                    </select>
+                </template>
+            </el-table-column>
+
+            <el-table-column fixed="right"
+                             label="操作"
+                             width="180">
+                <template slot-scope="scope">
+                    <el-button v-if="!scope.row.isEdit" @@click="editStatus(scope.row)" type="primary" size="small">
+                        修改状态
+                    </el-button>
+                    <span v-else>
+                        <el-button v-if="scope.row.isEdit" @@click="submitStatus(scope.row)" type="success" size="small">
+                            保存
+                        </el-button>
+                        <el-button v-if="scope.row.isEdit" @@click="cancelEditStatus(scope.row)" type="danger" size="small">
+                            取消
+                        </el-button>
+                    </span>
+                </template>
             </el-table-column>
         </el-table>
+
+        <el-pagination background
+                       @@size-change="pageSizeChange"
+                       @@current-change="pageCurrentChange"
+                       :page-size="pagerOpt.pageSize"
+                       :current-page="pagerOpt.page"
+                       :total="pagerOpt.total"
+                       :page-sizes="[2, 10, 20, 50, 100]"
+                       layout="total, sizes, prev, pager, next, jumper">
+        </el-pagination>
     </div>
 </script>
-<script type="text/javascript">var order = {
+<script type="text/javascript">
+    var order = {
         template: "#orderList",
         data() {
             return {
                 tableData: [],
+
                 pagerOpt: {
                     pageSize: 2,
                     page: 1,
@@ -55,11 +96,6 @@
                 var params = `pageNo=${this.pagerOpt.page}&pageSize=${this.pagerOpt.pageSize}`
                 _fetch("/Order/GetOrders?" + params, "GET").then(res => {
                     if (res.status = true) {
-
-                        res.data.filter(x => {
-                            x.checked = false;
-                            x.isEdit = false;
-                        });
                         this.tableData = res.data;
                         this.pagerOpt.total = res.total;
                     }
@@ -69,33 +105,43 @@
                 });
             },
 
-            editOrder() {
-                var ids = [];
-                this.tableData.filter(v => {
-                    if (v.checked) {
-                        ids.push(v.id);
-                    }
-                });
-
-                if (ids.length == 0 || ids.length > 1) {
-                    alert('请先选择一份订单');
-                    return;
-                }
-
-                var item = this.tableData.find(x => x.id == ids[0]);
-                item.isEdit = true;
-                this.backup = item.status;
+            editStatus(row) {
+                row.isEdit = true;
+                this.backup = row.status;
             },
 
-            cancelOrder(item) {
+            format(row, column) {
+                var val = row.price.toFixed(2);
+
+                return `￥${val}元`;
+            },
+
+            dateFormatter(row, column) {
+                let datetime = row.createTime;
+                if (datetime) {
+                    datetime = new Date(datetime);
+                    let y = datetime.getFullYear() + '-';
+                    let mon = datetime.getMonth() + 1 + '-';
+                    let d = datetime.getDate();
+                    return y + mon + d;
+                }
+                return ''
+            },
+
+            cancelEditStatus(item) {
                 item.isEdit = false;
                 item.status = this.backup;
             },
 
-            saveOrder(item) {
+            submitStatus(item) {
+                if (item.status == this.backup) {
+                    alert("请修改状态后再提交！");
+                    return;
+                }
+
                 var parms = `id=${item.id}&status=${item.status}`
-                _fetch("/Order/Save?" + parms, "Post").then(res => {
-                    if (res.status = "Success") {
+                _fetch("/Order/UpdateStatus?" + parms, "Post").then(res => {
+                    if (res.status == true) {
                         this.getData();
                     }
                     else {
@@ -104,22 +150,13 @@
                 });
             },
 
-            deleteOrder() {
-                var ids = [];
-                this.tableData.forEach(function (v) {
-                    if (v.checked) {
-                        ids.push(v.id);
-                    }
-                });
-                if (ids.length == 0) {
-                    alert('请先选择一份订单');
-                    return;
-                }
-
-                alert("删除成功！");
+            pageSizeChange(val) {
+                this.pagerOpt.pageSize = val;
+                this.getData();
             },
 
-            pageChange() {
+            pageCurrentChange(val) {
+                this.pagerOpt.page = val;
                 this.getData();
             }
         }

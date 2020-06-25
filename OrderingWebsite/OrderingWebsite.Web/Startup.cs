@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using TakeOut.BLL;
+using OrderingWebsite.BLL;
 
 namespace OrderingWebsite.Web
 {
@@ -26,6 +28,8 @@ namespace OrderingWebsite.Web
                     Configuration.GetConnectionString("DefaultConnection"),
                     sqliteOptions => { sqliteOptions.MigrationsAssembly("OrderingWebsite.Web");}
                 ));
+            services.AddScoped<OrderService>();
+            services.AddScoped<FoodService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

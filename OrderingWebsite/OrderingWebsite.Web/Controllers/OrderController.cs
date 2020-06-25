@@ -8,16 +8,17 @@ using Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using OrderingWebsite.BLL;
 using OrderingWebsite.Web.Models;
+using TakeOut.BLL;
 
 namespace TakeOut.Web.Controllers
 {
     public class OrderController : Controller
     {
-        private readonly DataContext _dataContext;
+        private readonly OrderService _orderService;
 
-        public OrderController(DataContext dataContext)
+        public OrderController(OrderService orderService)
         {
-            _dataContext = dataContext;
+            _orderService = orderService;
         }
 
         public IActionResult Index()
@@ -27,34 +28,14 @@ namespace TakeOut.Web.Controllers
 
         public IActionResult GetOrders(QueryDto dto)
         {
-            var data = from a in _dataContext.Orders
-                       join d in _dataContext.Users
-                       on a.UserId equals d.Id
-                       select new
-                       {
-                           Id = a.Id,
-                           UserName = d.Name,
-                           Address = d.Address,
-                           a.CreateTime,
-                           a.Status,
-                           a.Price
-                       };
-
-            var orders = data.Skip((dto.PageNo - 1) * dto.PageSize).Take(dto.PageSize).ToList();
-            return Json(new ResponseModel(true, orders, data.Count()));
+            var orders = _orderService.GetOrders(dto, out int total);
+            return Json(new ResponseModel(true, orders, total));
         }
 
         [HttpPost]
-        public IActionResult UpdateStatus(int id, string status)
+        public async Task<IActionResult> UpdateStatus(int id, string status)
         {
-            var order = _dataContext.Orders.FirstOrDefault(x => x.Id == id);
-            if (order != null)
-            {
-                order.Status = status;
-                _dataContext.SaveChanges();
-            }
-
-            return Json(new ResponseModel(true));
+            return Json(new ResponseModel(await _orderService.UpdateOrderStatus(id, status)));
         }
     }
 }

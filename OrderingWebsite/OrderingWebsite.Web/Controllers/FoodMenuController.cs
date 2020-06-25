@@ -1,23 +1,20 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using Data.Models;
+﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using OrderingWebsite.BLL;
-using OrderingWebsite.DAL.Models;
+using OrderingWebsite.Web.Models;
 
 namespace TakeOut.Web.Controllers
 {
+
     public class FoodMenuController : Controller
     {
-        private readonly DataContext _dbContext;
+        private readonly FoodService _foodService;
         private readonly IHostingEnvironment _hostingEnvironment;
 
-        public FoodMenuController(DataContext dbContex, IHostingEnvironment hostingEnvironment)
+        public FoodMenuController(FoodService foodService, IHostingEnvironment hostingEnvironment)
         {
-            _dbContext = dbContex;
+            _foodService = foodService;
             _hostingEnvironment = hostingEnvironment;
         }
 
@@ -28,9 +25,8 @@ namespace TakeOut.Web.Controllers
 
         public IActionResult GetFoodMenus(QueryDto filter)
         {
-            var query = _dbContext.FoodMenus;
-            var foods = query.Skip((filter.PageNo - 1) * filter.PageSize).Take(filter.PageSize).ToList();
-            return Json(new { Status = "Success", Data = foods, Total = query.Count() });
+            var foods = _foodService.GetFoodMenus(filter, out int total);
+            return Json(new ResponseModel(true, foods, total));
         }
 
         [HttpPost]
@@ -42,7 +38,7 @@ namespace TakeOut.Web.Controllers
                 if (fileCount == 0) return Json(new { Success = false });
 
                 var file = Request.Form.Files[0];
-                var folder = _hostingEnvironment.WebRootPath + "/img";
+                var folder = _hostingEnvironment.WebRootPath + "/upload";
                 if (!Directory.Exists(folder))
                 {
                     Directory.CreateDirectory(folder);
@@ -54,7 +50,7 @@ namespace TakeOut.Web.Controllers
                     fs.Flush();
                 }
 
-                return Json(new { Success = true, fileName = $"/img/{Path.GetFileName(file.FileName)}" });
+                return Json(new { Success = true, fileName = $"/upload/{Path.GetFileName(file.FileName)}" });
             }
             catch
             {
@@ -63,21 +59,11 @@ namespace TakeOut.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddFood([FromBody] FoodMenuDto food)
+        public ActionResult AddFoodMenu([FromBody] FoodMenuDto food)
         {
-            var foodModel = new FoodMenu()
-            {
-                Name = food.Name,
-                Description = food.Description,
-                Type = food.Type,
-                ImgUrl = food.ImgUrl,
-                Price = food.Price,
-                StockCount = food.StockCount,
-                CreateTime = DateTime.Now
-            };
-            _dbContext.FoodMenus.Add(foodModel);
+            var result = _foodService.AddFoodMenu(food);
 
-            return Json(new { Success = _dbContext.SaveChanges() > 0 });
+            return Json(new ResponseModel(result > 0, null, 0));
         }
     }
 }
