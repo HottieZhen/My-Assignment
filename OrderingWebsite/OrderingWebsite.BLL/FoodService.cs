@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Data.Models;
+using OrderingWebsite.BLL.Dto;
 using OrderingWebsite.DAL.Models;
 
 namespace OrderingWebsite.BLL
@@ -54,6 +55,49 @@ namespace OrderingWebsite.BLL
             }
 
             return _dataContext.SaveChanges();
+        }
+
+        public List<StatisticsDto> GetStatistics(QueryDto filter)
+        {
+            var query = from a in _dataContext.Orders
+                        join b in _dataContext.Order_Foods
+                        on a.Id equals b.OrderId
+                        join c in _dataContext.FoodMenus
+                        on b.FoodId equals c.Id
+                        select new
+                        {
+                            a.CreateTime,
+                            c.Name,
+                            b.Count,
+                            c.Price
+                        };
+            if (filter.Start != null)
+            {
+                query = query.Where(x => x.CreateTime >= filter.Start);
+            }
+            if (filter.End != null)
+            {
+                query = query.Where(x => x.CreateTime <= filter.End);
+            }
+
+            var data = query.ToList();
+
+            var list = data.GroupBy(x => x.Name).Select(x => new StatisticsDto
+            {
+                FoodName = x.Key,
+                Count = x.Sum(y => y.Count),
+                Price = x.Sum(y => y.Price)
+            });
+            return list.ToList();
+        }
+
+        public bool Delete(int id)
+        {
+            var model = _dataContext.FoodMenus.FirstOrDefault(x => x.Id == id);
+            if (model == null) return false;
+
+            _dataContext.FoodMenus.Remove(model);
+            return _dataContext.SaveChanges() > 0;
         }
     }
 }

@@ -34,7 +34,7 @@
                     <el-button @@click="editFoodMenu(scope.row)" type="primary" size="small">
                         编辑
                     </el-button>
-                    <el-button @@click="deleteFoodMenu(scope.row)" type="danger" size="small">
+                    <el-button @@click="deleteFoodMenu(scope.row.id)" type="danger" size="small">
                         删除
                     </el-button>
                 </template>
@@ -143,11 +143,20 @@
                 this.addFoodVisible = true;
             },
 
-            deleteFoodMenu(row) {
-                this.backup = $.extend(true, {}, row);
+            deleteFoodMenu(id) {
+                _fetch("/FoodMenu/DeleteFoodMenu?id=" + id, "POST").then(res => {
+                    if (res.status == true) {
+                        alert("操作成功！");
+                        this.getData();
+                    }
+                    else {
+                        alert("系统出错了！");
+                    }
+                });
             },
 
             editFoodMenu(row) {
+                this.editType = "修改菜品";
                 this.form = {
                     Id: row.id,
                     Name: row.name,
@@ -180,6 +189,7 @@
 
             closeDialog() {
                 this.form = {
+                    Id: 0,
                     Name: "",
                     Description: "",
                     Price: "",
@@ -192,11 +202,11 @@
             },
 
             submitFoodMenu() {
-                //if (!this.form.Name || !this.form.Description || !this.form.Price
-                //    || !this.form.StockCount || !this.form.Type || !this.form.ImgUrl) {
-                //    alert("请完成下面所有信息！")
-                //    return;
-                //}
+                if (!this.form.Name || !this.form.Description || !this.form.Price
+                    || !this.form.StockCount || !this.form.Type || !this.form.ImgUrl) {
+                    alert("请完成下面所有信息！")
+                    return;
+                }
 
                 var model = $.extend(true, {}, this.form);
                 var data = {
@@ -212,6 +222,7 @@
                 _fetch("/FoodMenu/AddFoodMenu", "POST", data).then(res => {
                     if (res.status == true) {
                         alert("操作成功！");
+                        this.closeDialog();
                         this.getData();
                         this.addFoodVisible = false;
                     }
@@ -223,7 +234,7 @@
 
             afterUploaded(res) {
                 if (res.success == true) {
-                    this.model.ImgUrl = res.fileName;
+                    this.form.ImgUrl = res.fileName;
                 }
                 else {
                     alert("系统出错，请重试！");

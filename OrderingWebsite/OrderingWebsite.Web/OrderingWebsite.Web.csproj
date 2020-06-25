@@ -23,6 +23,7 @@
     <Folder Include="Views\FoodMenu\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Category\" />
+    <Folder Include="wwwroot\img\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\OrderingWebsite.DAL.csproj">

@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using OrderingWebsite.BLL;
@@ -18,17 +19,20 @@ namespace TakeOut.Web.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
 
+        [Authorize(Roles = "1")]
         public IActionResult Index()
         {
             return View();
         }
 
+        [Authorize(Roles = "1")]
         public IActionResult GetFoodMenus(QueryDto filter)
         {
             var foods = _foodService.GetFoodMenus(filter, out int total);
             return Json(new ResponseModel(true, foods, total));
         }
 
+        [Authorize(Roles = "1")]
         [HttpPost]
         public ActionResult UploadImg()
         {
@@ -58,12 +62,20 @@ namespace TakeOut.Web.Controllers
             }
         }
 
+        [Authorize(Roles = "1")]
         [HttpPost]
         public ActionResult AddFoodMenu([FromBody] FoodMenuDto food)
         {
             var result = _foodService.AddFoodMenu(food);
 
             return Json(new ResponseModel(result > 0, null, 0));
+        }
+
+        [Authorize(Roles = "1")]
+        public IActionResult DeleteFoodMenu(int id)
+        {
+            var data = _foodService.Delete(id);
+            return Json(new ResponseModel(data, null, 0));
         }
     }
 }
