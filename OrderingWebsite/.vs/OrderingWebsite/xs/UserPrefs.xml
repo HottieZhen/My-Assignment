@@ -1,8 +1,14 @@
 ﻿<Properties StartupConfiguration="{57E2C79D-8913-4218-B40F-1CAD92512B7D}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="OrderingWebsite.Web/Startup.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="OrderingWebsite.Web/Views/Category/Index.cshtml">
     <Files>
-      <File FileName="OrderingWebsite.Web/Views/Category/Index.cshtml" Line="1" Column="1" />
-      <File FileName="OrderingWebsite.Web/Startup.cs" Line="42" Column="1" />
+      <File FileName="OrderingWebsite.Web/Views/Account/Login.cshtml" Line="13" Column="22" />
+      <File FileName="OrderingWebsite.Web/Views/Account/Register.cshtml" Line="18" Column="10" />
+      <File FileName="OrderingWebsite.Web/Views/Account/RestPwd.cshtml" Line="11" Column="40" />
+      <File FileName="OrderingWebsite.Web/Controllers/AccountController.cs" Line="91" Column="10" />
+      <File FileName="OrderingWebsite.BLL/AccountService.cs" Line="47" Column="32" />
+      <File FileName="OrderingWebsite.Web/Views/Client/Index.cshtml" Line="1" Column="1" />
+      <File FileName="OrderingWebsite.Web/Views/Account/AELogin.cshtml" Line="1" Column="1" />
+      <File FileName="OrderingWebsite.Web/Views/Category/Index.cshtml" Line="22" Column="21" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,7 +17,9 @@
             <Node name="OrderingWebsite.BLL" expanded="True">
               <Node name="Dto" expanded="True" />
             </Node>
-            <Node name="OrderingWebsite.DAL" expanded="True" />
+            <Node name="OrderingWebsite.DAL" expanded="True">
+              <Node name="Tools" expanded="True" />
+            </Node>
             <Node name="OrderingWebsite.Web" expanded="True">
               <Node name="Dependencies" expanded="True">
                 <Node name="FrameworkReferences" expanded="True" />
@@ -21,13 +29,17 @@
               <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Account" expanded="True" />
-                <Node name="Category" expanded="True" />
+                <Node name="Category" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
+                <Node name="Client" expanded="True" />
                 <Node name="FoodMenu" expanded="True" />
                 <Node name="Home" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
                 <Node name="js" expanded="True" />
+                <Node name="lib" expanded="True" />
                 <Node name="upload" expanded="True" />
               </Node>
             </Node>

@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>注册</title>
+
+    <link rel="stylesheet" href="~/css/main.css" />
+    <link rel="stylesheet" href="~/lib/element-ui/theme-chalk/index.css" />
+    <script type="text/javascript" src="~/lib/vue/vue.js"></script>
+    <script type="text/javascript" src="~/lib/element-ui/index.js"></script>
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="~/js/site.js"></script>
+    <script type="text/javascript" src="~/js/moment.js"></script>
+    <style scoped>
+        * {
+            margin: 0;
+        }
+        .register-div {
+            background-color: #eee;
+            background: url(/img/login-bg.jpg) center no-repeat;
+            background-size: 100% 100%;
+            padding-bottom: 20px;
+            padding-top: 20vh;
+            min-height: 100vh;
+            height: 100%;
+        }
+
+        .register-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .register-page {
+            margin: 180px auto;
+            width: 350px;
+            padding: 35px 35px 15px;
+            background: #fff;
+            border: 1px solid #eaeaea;
+        }
+
+        label.el-checkbox.rememberme {
+            margin: 0px 0px 15px;
+            text-align: left;
+        }
+
+        .el-button--primary {
+            background-color: #415676 !important;
+        }
+
+        .el-button--primary:hover {
+            background-color: #1e78af !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="register-div">
+        <div class="register-container">
+            <el-form :model="model" :rules="rules2"
+                     status-icon
+                     ref="userForm"
+                     label-position="left"
+                     label-width="0px"
+                     class="demo-ruleForm register-page">
+                <h3 class="title">注册</h3>
+                <el-form-item prop="username" style="margin-top: 20px;">
+                    <el-input type="text"
+                              v-model="model.username"
+                              auto-complete="off"
+                              placeholder="用户名"></el-input>
+                </el-form-item>
+                <el-form-item prop="password">
+                    <el-input type="password"
+                              v-model="model.password"
+                              auto-complete="off"
+                              placeholder="密码"></el-input>
+                </el-form-item>
+                <el-form-item prop="address">
+                    <el-input type="address"
+                              v-model="model.address"
+                              auto-complete="off"
+                              placeholder="地址"></el-input>
+                </el-form-item>
+                <el-form-item prop="phone">
+                    <el-input type="phone"
+                              v-model="model.phone"
+                              auto-complete="off"
+                              placeholder="电话"></el-input>
+                </el-form-item>
+                <el-form-item style="width:100%;">
+                    <el-button type="primary" style="width:100%;" @@click="handleSubmit" :loading="logining">登录</el-button>
+                </el-form-item>
+            </el-form>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+        var app = new Vue({
+            el: "#app",
+            data:{
+                logining: false,
+                model: {
+                    username: '',
+                    password: '',
+                    address: '',
+                    phone: '',
+                },
+                rules2: {
+                    username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+                    password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+                    address: [{ required: true, message: '请输入地址', trigger: 'blur' }],
+                    phone: [{ required: true, message: '请输入电话', trigger: 'blur' }]
+                },
+            },
+             methods: {
+                handleSubmit(event) {
+                    this.$refs.userForm.validate((valid) => {
+                        if (valid) {
+                            var params = `username=${this.model.username}&password=${this.model.password}&address=${this.model.address}&phone=${this.model.phone}`;
+
+                            _fetch("/Account/Register?" + params, "POST").then(res => {
+                                if (res.status == true) {
+                                    alert("操作成功！");
+                                    location.href = "/Account/Login";
+                                }
+                                else {
+                                    alert("系统出错了！");
+                                }
+                            });
+
+                        } else {
+                            console.log('error submit!');
+                            return false;
+                        }
+                    })
+                }
+            }
+        });
+</script>
