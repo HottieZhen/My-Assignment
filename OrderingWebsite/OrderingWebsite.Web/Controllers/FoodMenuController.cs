@@ -31,7 +31,6 @@ namespace TakeOut.Web.Controllers
             return View();
         }
 
-        [Authorize(Roles = "1")]
         public IActionResult GetFoodMenus(QueryDto filter)
         {
             var foods = _foodService.GetFoodMenus(filter, out int total);

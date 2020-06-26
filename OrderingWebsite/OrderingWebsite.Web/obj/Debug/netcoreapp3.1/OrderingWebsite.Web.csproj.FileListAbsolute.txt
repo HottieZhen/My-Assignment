@@ -79,10 +79,11 @@
 /Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.Web/obj/Debug/netcoreapp3.1/OrderingWebsite.Web.genruntimeconfig.cache
 /Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.Web/obj/Debug/netcoreapp3.1/Razor/Views/FoodMenu/Index.cshtml.g.cs
 /Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.Web/obj/Debug/netcoreapp3.1/Razor/Views/Account/AELogin.cshtml.g.cs
-/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.Web/obj/Debug/netcoreapp3.1/Razor/Views/Account/Deny.cshtml.g.cs
 /Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.Web/obj/Debug/netcoreapp3.1/Razor/Views/Account/Login.cshtml.g.cs
 /Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.Web/obj/Debug/netcoreapp3.1/Razor/Views/FoodMenu/Statistics.cshtml.g.cs
 /Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.Web/obj/Debug/netcoreapp3.1/Razor/Views/Category/Index.cshtml.g.cs
 /Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.Web/obj/Debug/netcoreapp3.1/Razor/Views/Account/Register.cshtml.g.cs
 /Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.Web/obj/Debug/netcoreapp3.1/Razor/Views/Account/RestPwd.cshtml.g.cs
 /Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.Web/obj/Debug/netcoreapp3.1/Razor/Views/Client/Index.cshtml.g.cs
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.Web/obj/Debug/netcoreapp3.1/Razor/Views/Order/Index.cshtml.g.cs
+/Users/k/Documents/ASP.NET_CORE/OrderingWebsite/OrderingWebsite.Web/obj/Debug/netcoreapp3.1/Razor/Views/Account/Denied.cshtml.g.cs

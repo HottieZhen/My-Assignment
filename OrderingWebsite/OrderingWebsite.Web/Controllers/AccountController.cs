@@ -86,7 +86,7 @@ namespace OrderingWebsite.Web.Controllers
         [HttpPost]
         public IActionResult Register(string username, string password, string address, string phone)
         {
-            var result = _Service.Register(username, Encryp.MD5Encrypt(password), address, phone);
+            var result = _Service.Register(username.Trim(), Encryp.MD5Encrypt(password), address, phone);
             return Json(new ResponseModel(result, 0, 0));
         }
     }

@@ -1,1 +1,324 @@
-﻿
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index</title>
+
+    <link rel="stylesheet" href="~/lib/element-ui/theme-chalk/index.css" />
+    <script type="text/javascript" src="~/lib/vue/vue.js"></script>
+    <script type="text/javascript" src="~/lib/element-ui/index.js"></script>
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="~/js/site.js"></script>
+    <script type="text/javascript" src="~/js/moment.js"></script>
+</head>
+<body>
+    <div id="app">
+        <el-container>
+            <el-header>
+                <el-row>
+                    <el-col :span="12" style="color: #fff;text-align: left; font-size: 40px;">
+                        吃了么，您嘞
+                    </el-col>
+                    <el-col :span="12">
+                        <div class="pull-right">
+                            <div v-if="username" style="color: #fff">
+                                欢迎您, {{username}} &nbsp;&nbsp;
+                                <el-button type="warning" @@click="reset()">修改密码</el-button>
+                                <el-button type="success" @@click="logout()">退出</el-button>
+                            </div>
+                            <div v-else>
+                                <el-button type="success" @@click="login()">登录</el-button>
+                            </div>
+                        </div>
+                    </el-col>
+                </el-row>
+
+            </el-header>
+            <div class="main">
+                <div style="margin: auto;">
+                    <el-row>
+                        <el-col :span="24" style="text-align: left">
+                            <select class="el-input__inner" style="width: 10%" v-model="type">
+                                <option>荤菜</option>
+                                <option>素菜</option>
+                                <option>啤酒</option>
+                                <option>饮料</option>
+                                <option>凉菜</option>
+                                <option>主食</option>
+                            </select>
+                            <el-button type="success" @@click="getData()">查询</el-button>
+                            <el-button type="success" @@click="showCard()">购物车</el-button>
+                        </el-col>
+                    </el-row>
+
+
+                    <div>
+                        <div v-for="item in tableData" class="food-item">
+                            <div>
+                                <img style="width:350px;height:191px;" :src="item.imgUrl" alt="">
+                                <div class="demand-info">
+                                    <h4>
+                                        {{item.name}}
+                                        <span class="pull-right demand-status demand-status-start" style="cursor: pointer"
+                                              @@click="addToCard(item)">
+                                            预定
+                                        </span>
+                                    </h4>
+                                    <p>
+                                        价格：￥{{item.price}}元
+                                        <span class="pull-right">
+                                            上架时间：
+                                            <span style="display:inline-block;width:80px;">2020-06-21</span>
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span style="
+							display:  inline-block;
+							width: 200px;
+							overflow:  hidden;
+							text-overflow:  ellipsis;
+							white-space:  nowrap;
+							vertical-align: text-top;">	类型：{{item.type}}</span>
+                                        <span class="pull-right">
+                                            库存：
+                                            <span style="display:inline-block;width:80px;">{{item.stockCount}}</span>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <el-footer>到底了</el-footer>
+        </el-container>
+
+
+        <el-dialog title="购物车" :visible.sync="cardVisible">
+            <el-table :data="food"
+                      style="width: 100%">
+                <el-table-column prop="name"
+                                 label="菜名">
+                </el-table-column>
+                <el-table-column prop="price" width="100" :formatter="format"
+                                 label="价格">
+                </el-table-column>
+
+                <el-table-column fixed="right"
+                                 label="操作"
+                                 width="180">
+                    <template slot-scope="scope">
+                        <el-button @@click="removeFood(scope.$index)" type="danger" size="small">
+                            移除
+                        </el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+            <div style="text-align: right">总金额: {{totalPrice}}元</div>
+
+            <div slot="footer" class="dialog-footer">
+                <el-button @@click="closeDialog()">取 消</el-button>
+                <el-button type="primary" @@click="submitFoodMenu()">结 算</el-button>
+            </div>
+        </el-dialog>
+    </div>
+</body>
+</html>
+
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            username: '@User.Identity.Name',
+            tableData: [],
+
+            pagerOpt: {
+                pageSize: 50,
+                page: 1,
+                total: 0,
+            },
+            type: "",
+            food: [],
+            cardVisible: false,
+        },
+        mounted() {
+            this.getData();
+        },
+        computed: {
+            totalPrice() {
+                return (this.food || []).
+                    reduce((a, x) => a +  (x.price || 0), 0);
+            }
+        },
+        methods: {
+            getData() {
+                var params = `pageNo=${this.pagerOpt.page}&pageSize=${this.pagerOpt.pageSize}&type=${this.type}`
+                _fetch("/FoodMenu/GetFoodMenus?" + params, "GET").then(res => {
+                    if (res.status = "Success") {
+                        this.tableData = res.data;
+                    }
+                    else {
+                        alert("系统出错了！");
+                    }
+                });
+            },
+
+            logout() {
+                location.href="/Account/Logout"
+            },
+
+            login() {
+                location.href="/Account/Login"
+            },
+
+            reset() {
+                location.href = '/Account/RestPwd';
+            },
+
+            addToCard(item) {
+                this.food.push($.extend(true, {}, item));
+            },
+
+            closeDialog() {
+                this.cardVisible = false;
+            },
+
+            showCard() {
+                this.cardVisible = true;
+            },
+
+            removeFood(index) {
+                this.food.splice(index, 1);
+            },
+
+            format(row, column) {
+                var val = row.price.toFixed(2);
+
+                return `￥${val}元`;
+            },
+
+            submitFoodMenu() {
+                if (!this.username) {
+                    alert("请先登录！");
+                    location.href = "/Account/Login";
+                }
+                if (this.food.length == 0) {
+                    alert("请先点单！");
+                }
+
+                var foodIds = "";
+                this.food.filter(x => foodIds = x.id + ",");
+                var params = `totalPrice=${this.totalPrice}&foodIds=${foodIds}`;
+                _fetch("/Order/AddOrder?" + params, "POST").then(res => {
+                    if (res.status = "Success") {
+                        alert("下单成功，请耐心等候外卖小哥！");
+                    }
+                    else {
+                        alert("系统出错了！");
+                    }
+                });
+            }
+        }
+    });
+</script>
+
+<style>
+    .el-header {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/img/header-bg.jpg);
+        color: #333;
+        text-align: center;
+        height: 300px !important;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center center;
+    }
+
+    .el-footer {
+        background-color: #B3C0D1;
+        color: #333;
+        text-align: center;
+        line-height: 60px;
+    }
+
+    .main {
+        color: #333;
+        margin: auto;
+        background-color: #fff;
+        height: auto;
+        margin-top: 40px;
+        padding: 0 30px 0 30px;
+    }
+
+    body > .el-container {
+        margin-bottom: 40px;
+    }
+
+    .el-row {
+        margin-bottom: 20px;
+    }
+
+    .el-col {
+        border-radius: 4px;
+    }
+
+    .bg-purple-dark {
+        background: #99a9bf;
+    }
+
+    .bg-purple {
+        background: #d3dce6;
+    }
+
+    .bg-purple-light {
+        background: #e5e9f2;
+    }
+
+    .grid-content {
+        border-radius: 4px;
+        min-height: 36px;
+    }
+
+    .row-bg {
+        padding: 10px 0;
+        background-color: #f9fafc;
+    }
+
+    .food-item {
+        width: 350px;
+        margin: 0 30px 25px 0;
+        box-shadow: 4px 4px 10px #d9d9d9;
+        display: inline-block;
+    }
+
+    .demand-info {
+        padding: 7px 15px;
+        text-align: left;
+    }
+
+    .demand-status-start {
+        background-color: #5cb85c;
+    }
+
+    .demand-status {
+        padding: 5px;
+        color: #fff;
+        font-size: 14px;
+        margin-top: -5px;
+    }
+
+    .pull-right {
+        float: right !important;
+    }
+
+    .demand-info h4 {
+        margin-bottom: 20px;
+        font-size: 15px;
+    }
+
+    p {
+        margin: 0 0 10px;
+    }
+</style>
+
