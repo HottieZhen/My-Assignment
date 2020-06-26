@@ -87,7 +87,8 @@
     </div>
 </script>
 
-<script type="text/javascript">var foodMenu = {
+<script type="text/javascript">
+    var foodMenu = {
         template: '#foodMenuList',
         data() {
             return {
@@ -144,7 +145,7 @@
             },
 
             deleteFoodMenu(id) {
-                _fetch("/FoodMenu/DeleteFoodMenu?id=" + id, "POST").then(res => {
+               _fetch("/FoodMenu/DeleteFoodMenu?id=" + id, "POST").then(res => {
                     if (res.status == true) {
                         alert("操作成功！");
                         this.getData();
@@ -175,12 +176,12 @@
                 return `￥${val}元`;
             },
 
-            dateFormatter(row, column) {
+            dateFormatter (row, column) {
                 let datetime = row.time;
-                if (datetime) {
+                if(datetime){
                     datetime = new Date(datetime);
                     let y = datetime.getFullYear() + '-';
-                    let mon = datetime.getMonth() + 1 + '-';
+                    let mon = datetime.getMonth()+1 + '-';
                     let d = datetime.getDate();
                     return y + mon + d;
                 }
@@ -198,13 +199,18 @@
                     ImgUrl: ""
                 };
 
-                this.addFoodVisible = false;
+               this.addFoodVisible = false;
             },
 
             submitFoodMenu() {
                 if (!this.form.Name || !this.form.Description || !this.form.Price
                     || !this.form.StockCount || !this.form.Type || !this.form.ImgUrl) {
                     alert("请完成下面所有信息！")
+                    return;
+                }
+
+                if (isNaN(parseFloat(this.form.Price)) || isNaN(parseFloat(this.form.StockCount))) {
+                     alert("价格或库存必须为数字！")
                     return;
                 }
 
@@ -291,7 +297,7 @@
                 alert("删除成功！");
             },
 
-            pageSizeChange(val) {
+             pageSizeChange(val) {
                 this.pagerOpt.pageSize = val;
                 this.getData();
             },
@@ -302,7 +308,7 @@
             },
 
             handleAvatarSuccess(res, file) {
-                this.form.ImgUrl = URL.createObjectURL(file.raw);
+                this.form.ImgUrl = res.fileName;
             },
 
             beforeAvatarUpload(file) {
@@ -319,4 +325,5 @@
                 }
             }
         }
-    };</script>
+    };
+</script>

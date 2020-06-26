@@ -1,13 +1,8 @@
 ﻿<Properties StartupConfiguration="{57E2C79D-8913-4218-B40F-1CAD92512B7D}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="OrderingWebsite.BLL/OrderService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="OrderingWebsite.Web/Startup.cs">
     <Files>
-      <File FileName="OrderingWebsite.Web/Views/Order/Index.cshtml" Line="1" Column="1" />
-      <File FileName="OrderingWebsite.Web/Views/FoodMenu/Index.cshtml" />
-      <File FileName="OrderingWebsite.Web/Controllers/FoodMenuController.cs" />
-      <File FileName="OrderingWebsite.BLL/FoodService.cs" Line="30" Column="1" />
-      <File FileName="OrderingWebsite.Web/Views/Account/AELogin.cshtml" Line="1" Column="1" />
-      <File FileName="OrderingWebsite.Web/Views/FoodMenu/Statistics.cshtml" Line="69" Column="1" />
-      <File FileName="OrderingWebsite.BLL/OrderService.cs" Line="1" Column="1" />
+      <File FileName="OrderingWebsite.Web/Views/Category/Index.cshtml" Line="1" Column="1" />
+      <File FileName="OrderingWebsite.Web/Startup.cs" Line="42" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,8 +10,8 @@
           <Node name="OrderingWebsite" expanded="True">
             <Node name="OrderingWebsite.BLL" expanded="True">
               <Node name="Dto" expanded="True" />
-              <Node name="OrderService.cs" selected="True" />
             </Node>
+            <Node name="OrderingWebsite.DAL" expanded="True" />
             <Node name="OrderingWebsite.Web" expanded="True">
               <Node name="Dependencies" expanded="True">
                 <Node name="FrameworkReferences" expanded="True" />
@@ -26,9 +21,9 @@
               <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Account" expanded="True" />
+                <Node name="Category" expanded="True" />
                 <Node name="FoodMenu" expanded="True" />
                 <Node name="Home" expanded="True" />
-                <Node name="Order" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
