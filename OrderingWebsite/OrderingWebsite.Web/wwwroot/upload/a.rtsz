@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RTSZDocument>
+  <RoyalDocument>
+    <ID>27b2ee8e-f534-4032-be8d-02e2292f3b78</ID>
+    <Modified>06/02/2020 09:45:17.872</Modified>
+    <ModifiedBy>k</ModifiedBy>
+    <Name>a</Name>
+    <Created>06/02/2020 09:27:48.467</Created>
+    <CreatedBy>k</CreatedBy>
+    <PositionNr>0</PositionNr>
+    <IsExpanded>True</IsExpanded>
+    <DocumentType>Workspace</DocumentType>
+    <CustomField11 />
+    <CustomField12 />
+    <CustomField13 />
+    <CustomField14 />
+    <CustomField15 />
+    <CustomField16 />
+    <CustomField17 />
+    <CustomField18 />
+    <CustomField19 />
+    <CustomField20 />
+    <CustomProperties />
+    <CredentialPassword />
+    <CredentialPassphrase />
+    <PasswordHash />
+    <AutoMergeOption>1</AutoMergeOption>
+    <SaveOption>2</SaveOption>
+    <FileName>/Users/k/Documents/a.rtsz</FileName>
+  </RoyalDocument>
+  <RoyalTrash>
+    <ID>39c583c4-bb7d-4f41-805d-f7b0b31aa233</ID>
+    <Name>Trashcan</Name>
+    <Modified>06/02/2020 09:27:48.467</Modified>
+    <Created>06/02/2020 09:27:48.467</Created>
+    <ModifiedBy>k</ModifiedBy>
+    <CreatedBy>k</CreatedBy>
+    <PositionNr>2</PositionNr>
+    <IsExpanded>False</IsExpanded>
+    <ParentID>27b2ee8e-f534-4032-be8d-02e2292f3b78</ParentID>
+    <CustomField11 />
+    <CustomField12 />
+    <CustomField13 />
+    <CustomField14 />
+    <CustomField15 />
+    <CustomField16 />
+    <CustomField17 />
+    <CustomField18 />
+    <CustomField19 />
+    <CustomField20 />
+    <CustomProperties />
+    <CredentialPassword />
+    <CredentialPassphrase />
+  </RoyalTrash>
+  <RoyalFolder>
+    <ID>a780c6bc-c973-4f11-b894-f9b325387322</ID>
+    <Name>Connections</Name>
+    <Modified>06/02/2020 09:27:48.481</Modified>
+    <Created>06/02/2020 09:27:48.467</Created>
+    <ModifiedBy>k</ModifiedBy>
+    <CreatedBy>k</CreatedBy>
+    <PositionNr>4</PositionNr>
+    <IsExpanded>True</IsExpanded>
+    <ParentID>27b2ee8e-f534-4032-be8d-02e2292f3b78</ParentID>
+    <ObjectSpecialUsage />
+    <CustomField11 />
+    <CustomField12 />
+    <CustomField13 />
+    <CustomField14 />
+    <CustomField15 />
+    <CustomField16 />
+    <CustomField17 />
+    <CustomField18 />
+    <CustomField19 />
+    <CustomField20 />
+    <CustomProperties />
+    <CredentialPassword />
+    <CredentialPassphrase />
+  </RoyalFolder>
+  <RoyalSSHConnection>
+    <ID>f65f1084-3169-43b2-90f4-07ba6ba7ea9c</ID>
+    <Name>new york</Name>
+    <Modified>06/02/2020 09:32:04.927</Modified>
+    <Created>06/02/2020 09:27:51.808</Created>
+    <ModifiedBy>k</ModifiedBy>
+    <CreatedBy>k</CreatedBy>
+    <PositionNr>2</PositionNr>
+    <IsConnectionTemplate>False</IsConnectionTemplate>
+    <ParentID>a780c6bc-c973-4f11-b894-f9b325387322</ParentID>
+    <ObjectSpecialUsage />
+    <URI>149.28.231.213</URI>
+    <CustomField11 />
+    <CustomField12 />
+    <CustomField13 />
+    <CustomField14 />
+    <CustomField15 />
+    <CustomField16 />
+    <CustomField17 />
+    <CustomField18 />
+    <CustomField19 />
+    <CustomField20 />
+    <CustomProperties />
+    <CredentialPassword>HrKXaeTNu5cJKJJqB0tgERdReA3UHEWvyVi2uoU+KCIF/noyKMJt41N/3NvZ6WtdT66EiXUwLVDeEOvvlqthh0wZBEXmYi+7SQnyjlSj2nQ=</CredentialPassword>
+    <CredentialPassphrase />
+    <Passphrase />
+    <ProxyPassword />
+    <ConnectionType>ssh;SSH</ConnectionType>
+    <IsTelnetConnection>False</IsTelnetConnection>
+    <IsSerialPortConnection>False</IsSerialPortConnection>
+    <Port>22</Port>
+    <Description>new york</Description>
+    <PhysicalAddress />
+    <CustomImageName />
+    <CustomImageList>{}</CustomImageList>
+    <CustomImage />
+    <ColorFromParent>False</ColorFromParent>
+    <Color />
+    <Favorite>False</Favorite>
+    <CredentialFromParent>False</CredentialFromParent>
+    <CredentialMode>2</CredentialMode>
+    <CredentialAutologon>True</CredentialAutologon>
+    <CredentialOmitDomain>False</CredentialOmitDomain>
+    <CredentialUsername>root</CredentialUsername>
+    <CredentialName />
+    <CredentialKeyMode>0</CredentialKeyMode>
+    <CredentialKeyFile />
+    <PrivateKeyPath />
+    <CredentialKeyContent />
+  </RoyalSSHConnection>
+  <RoyalFolder>
+    <ID>bae0f80c-82c2-49f0-b79a-6b7c0625bf23</ID>
+    <Name>Credentials</Name>
+    <Modified>06/02/2020 09:27:48.484</Modified>
+    <Created>06/02/2020 09:27:48.483</Created>
+    <ModifiedBy>k</ModifiedBy>
+    <CreatedBy>k</CreatedBy>
+    <PositionNr>6</PositionNr>
+    <IsExpanded>False</IsExpanded>
+    <ParentID>27b2ee8e-f534-4032-be8d-02e2292f3b78</ParentID>
+    <ObjectSpecialUsage />
+    <CustomField11 />
+    <CustomField12 />
+    <CustomField13 />
+    <CustomField14 />
+    <CustomField15 />
+    <CustomField16 />
+    <CustomField17 />
+    <CustomField18 />
+    <CustomField19 />
+    <CustomField20 />
+    <CustomProperties />
+    <CredentialPassword />
+    <CredentialPassphrase />
+  </RoyalFolder>
+  <RoyalFolder>
+    <ID>20070e8f-3733-43d4-b054-1c7565bd742b</ID>
+    <Name>Tasks</Name>
+    <Modified>06/02/2020 09:27:48.488</Modified>
+    <Created>06/02/2020 09:27:48.484</Created>
+    <ModifiedBy>k</ModifiedBy>
+    <CreatedBy>k</CreatedBy>
+    <PositionNr>8</PositionNr>
+    <IsExpanded>False</IsExpanded>
+    <ParentID>27b2ee8e-f534-4032-be8d-02e2292f3b78</ParentID>
+    <ObjectSpecialUsage />
+    <CustomField11 />
+    <CustomField12 />
+    <CustomField13 />
+    <CustomField14 />
+    <CustomField15 />
+    <CustomField16 />
+    <CustomField17 />
+    <CustomField18 />
+    <CustomField19 />
+    <CustomField20 />
+    <CustomProperties />
+    <CredentialPassword />
+    <CredentialPassphrase />
+  </RoyalFolder>
+</RTSZDocument>

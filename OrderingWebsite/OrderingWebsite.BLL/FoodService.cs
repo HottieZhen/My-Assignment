@@ -18,7 +18,12 @@ namespace OrderingWebsite.BLL
 
         public List<FoodMenu> GetFoodMenus(QueryDto filter, out int total)
         {
-            var query = _dataContext.FoodMenus;
+            var query = _dataContext.FoodMenus.AsQueryable();
+
+            if (!string.IsNullOrEmpty(filter.Type))
+            {
+                query = query.Where(x => x.Type == filter.Type);
+            }
 
             var foods = query.Skip((filter.PageNo - 1) * filter.PageSize).Take(filter.PageSize).ToList();
             total = query.Count();
